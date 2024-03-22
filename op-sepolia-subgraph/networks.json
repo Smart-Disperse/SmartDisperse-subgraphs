@@ -1,8 +1,8 @@
 {
-  "base-sepolia": {
+  "optimism-sepolia": {
     "SmartDisperse": {
       "address": "0x05c106CaD72b04c09F228286fEd949eC6f9539a7",
-      "startBlock": 7596092
+      "startBlock": 9578819
     }
   }
 }

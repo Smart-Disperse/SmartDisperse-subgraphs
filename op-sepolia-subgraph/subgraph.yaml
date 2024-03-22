@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: SmartDisperse
-    network: sepolia
+    network: optimism-sepolia
     source:
-      address: "0xfaa54D2c30D57d2d72c71201d288Ed6E4Ed86622"
+      address: "0x05c106CaD72b04c09F228286fEd949eC6f9539a7"
       abi: SmartDisperse
-      startBlock: 5525988
+      startBlock: 9578819
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

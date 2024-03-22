@@ -1,4 +1,3 @@
-import { BigInt, Bytes } from "@graphprotocol/graph-ts";
 import {
   ERC20TokenDispersed as ERC20TokenDispersedEvent,
   EtherDispersed as EtherDispersedEvent,
@@ -18,8 +17,8 @@ export function handleERC20TokenDispersed(
   )
   entity._sender = event.params._sender
   entity._token = event.params._token
-  entity._recipients = changetype<Bytes[]>(event.params._recipients);
-  entity._values = changetype<BigInt[]>(event.params._values);
+  entity._recipients = event.params._recipients
+  entity._values = event.params._values
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
@@ -33,8 +32,8 @@ export function handleEtherDispersed(event: EtherDispersedEvent): void {
     event.transaction.hash.concatI32(event.logIndex.toI32())
   )
   entity._sender = event.params._sender
-  entity._recipients = changetype<Bytes[]>(event.params._recipients);
-  entity._values = changetype<BigInt[]>(event.params._values);
+  entity._recipients = event.params._recipients
+  entity._values = event.params._values
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
