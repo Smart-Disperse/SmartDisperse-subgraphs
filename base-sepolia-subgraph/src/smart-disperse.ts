@@ -2,7 +2,7 @@ import {
   ERC20TokenDispersed as ERC20TokenDispersedEvent,
   EtherDispersed as EtherDispersedEvent,
   OwnershipTransferred as OwnershipTransferredEvent
-} from "../generated/Contract/Contract"
+} from "../generated/SmartDisperse/SmartDisperse"
 import {
   ERC20TokenDispersed,
   EtherDispersed,

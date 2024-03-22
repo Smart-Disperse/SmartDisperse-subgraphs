@@ -4,7 +4,7 @@ import {
   ERC20TokenDispersed,
   EtherDispersed,
   OwnershipTransferred
-} from "../generated/Contract/Contract"
+} from "../generated/SmartDisperse/SmartDisperse"
 
 export function createERC20TokenDispersedEvent(
   _sender: Address,

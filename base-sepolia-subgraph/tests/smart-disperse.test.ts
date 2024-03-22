@@ -8,9 +8,9 @@ import {
 } from "matchstick-as/assembly/index"
 import { Address, BigInt } from "@graphprotocol/graph-ts"
 import { ERC20TokenDispersed } from "../generated/schema"
-import { ERC20TokenDispersed as ERC20TokenDispersedEvent } from "../generated/Contract/Contract"
-import { handleERC20TokenDispersed } from "../src/contract"
-import { createERC20TokenDispersedEvent } from "./contract-utils"
+import { ERC20TokenDispersed as ERC20TokenDispersedEvent } from "../generated/SmartDisperse/SmartDisperse"
+import { handleERC20TokenDispersed } from "../src/smart-disperse"
+import { createERC20TokenDispersedEvent } from "./smart-disperse-utils"
 
 // Tests structure (matchstick-as >=0.5.0)
 // https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0
