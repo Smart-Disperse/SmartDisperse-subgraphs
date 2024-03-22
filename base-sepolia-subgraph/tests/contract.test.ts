@@ -8,15 +8,18 @@ import {
 } from "matchstick-as/assembly/index"
 import { Address, BigInt } from "@graphprotocol/graph-ts"
 import { ERC20TokenDispersed } from "../generated/schema"
-import { ERC20TokenDispersed as ERC20TokenDispersedEvent } from "../generated/SmartDisperse/SmartDisperse"
-import { handleERC20TokenDispersed } from "../src/smart-disperse"
-import { createERC20TokenDispersedEvent } from "./smart-disperse-utils"
+import { ERC20TokenDispersed as ERC20TokenDispersedEvent } from "../generated/Contract/Contract"
+import { handleERC20TokenDispersed } from "../src/contract"
+import { createERC20TokenDispersedEvent } from "./contract-utils"
 
 // Tests structure (matchstick-as >=0.5.0)
 // https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0
 
 describe("Describe entity assertions", () => {
   beforeAll(() => {
+    let _sender = Address.fromString(
+      "0x0000000000000000000000000000000000000001"
+    )
     let _token = Address.fromString(
       "0x0000000000000000000000000000000000000001"
     )
@@ -25,6 +28,7 @@ describe("Describe entity assertions", () => {
     ]
     let _values = [BigInt.fromI32(234)]
     let newERC20TokenDispersedEvent = createERC20TokenDispersedEvent(
+      _sender,
       _token,
       _recipients,
       _values
@@ -43,6 +47,12 @@ describe("Describe entity assertions", () => {
     assert.entityCount("ERC20TokenDispersed", 1)
 
     // 0xa16081f360e3847006db660bae1c6d1b2e17ec2a is the default address used in newMockEvent() function
+    assert.fieldEquals(
+      "ERC20TokenDispersed",
+      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
+      "_sender",
+      "0x0000000000000000000000000000000000000001"
+    )
     assert.fieldEquals(
       "ERC20TokenDispersed",
       "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",

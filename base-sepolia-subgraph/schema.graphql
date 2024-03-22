@@ -1,5 +1,6 @@
 type ERC20TokenDispersed @entity(immutable: true) {
   id: Bytes!
+  _sender: Bytes! # address
   _token: Bytes! # address
   _recipients: [Bytes!]! # address[]
   _values: [BigInt!]! # uint256[]
@@ -10,6 +11,7 @@ type ERC20TokenDispersed @entity(immutable: true) {
 
 type EtherDispersed @entity(immutable: true) {
   id: Bytes!
+  _sender: Bytes! # address
   _recipients: [Bytes!]! # address[]
   _values: [BigInt!]! # uint256[]
   blockNumber: BigInt!

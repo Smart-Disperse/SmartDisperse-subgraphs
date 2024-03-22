@@ -4,9 +4,10 @@ import {
   ERC20TokenDispersed,
   EtherDispersed,
   OwnershipTransferred
-} from "../generated/SmartDisperse/SmartDisperse"
+} from "../generated/Contract/Contract"
 
 export function createERC20TokenDispersedEvent(
+  _sender: Address,
   _token: Address,
   _recipients: Array<Address>,
   _values: Array<BigInt>
@@ -15,6 +16,9 @@ export function createERC20TokenDispersedEvent(
 
   erc20TokenDispersedEvent.parameters = new Array()
 
+  erc20TokenDispersedEvent.parameters.push(
+    new ethereum.EventParam("_sender", ethereum.Value.fromAddress(_sender))
+  )
   erc20TokenDispersedEvent.parameters.push(
     new ethereum.EventParam("_token", ethereum.Value.fromAddress(_token))
   )
@@ -35,6 +39,7 @@ export function createERC20TokenDispersedEvent(
 }
 
 export function createEtherDispersedEvent(
+  _sender: Address,
   _recipients: Array<Address>,
   _values: Array<BigInt>
 ): EtherDispersed {
@@ -42,6 +47,9 @@ export function createEtherDispersedEvent(
 
   etherDispersedEvent.parameters = new Array()
 
+  etherDispersedEvent.parameters.push(
+    new ethereum.EventParam("_sender", ethereum.Value.fromAddress(_sender))
+  )
   etherDispersedEvent.parameters.push(
     new ethereum.EventParam(
       "_recipients",
