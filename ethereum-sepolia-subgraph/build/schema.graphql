@@ -1,0 +1,29 @@
+type ERC20TokenDispersed @entity(immutable: true) {
+  id: Bytes!
+  _sender: Bytes! # address
+  _token: Bytes! # address
+  _recipients: [Bytes!]! # address[]
+  _values: [BigInt!]! # uint256[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EtherDispersed @entity(immutable: true) {
+  id: Bytes!
+  _sender: Bytes! # address
+  _recipients: [Bytes!]! # address[]
+  _values: [BigInt!]! # uint256[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
