@@ -1,0 +1,32 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SmartDisperse
+    network: optimism-sepolia
+    source:
+      address: "0x05c106CaD72b04c09F228286fEd949eC6f9539a7"
+      abi: SmartDisperse
+      startBlock: 9578819
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ERC20TokenDispersed
+        - EtherDispersed
+        - OwnershipTransferred
+      abis:
+        - name: SmartDisperse
+          file: SmartDisperse\abis\SmartDisperse.json
+      eventHandlers:
+        - event: ERC20TokenDispersed(address,address,address[],uint256[])
+          handler: handleERC20TokenDispersed
+        - event: EtherDispersed(address,address[],uint256[])
+          handler: handleEtherDispersed
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: SmartDisperse\SmartDisperse.wasm
