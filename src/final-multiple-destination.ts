@@ -12,6 +12,7 @@ import {
   OwnershipTransferRequested,
   OwnershipTransferred
 } from "../generated/schema"
+import {BigInt, Bytes} from "@graphprotocol/graph-ts"
 
 export function handleERC20TokenDispersed(
   event: ERC20TokenDispersedEvent
@@ -21,9 +22,8 @@ export function handleERC20TokenDispersed(
   )
   entity.sender = event.params.sender
   entity.token = event.params.token
-  entity.recipients = event.params.recipients
-  entity.amounts = event.params.amounts
-
+  entity.recipients = changetype<Bytes[]>(event.params.recipients)
+  entity.amounts = changetype<BigInt[]>(event.params.amounts)
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
   entity.transactionHash = event.transaction.hash
@@ -57,9 +57,8 @@ export function handleMessageSent(event: MessageSentEvent): void {
   entity.messageId = event.params.messageId
   entity.destinationChainSelector = event.params.destinationChainSelector
   entity.receiver = event.params.receiver
-  entity._paymentData_paymentReceivers =
-    event.params._paymentData.paymentReceivers
-  entity._paymentData_amounts = event.params._paymentData.amounts
+  entity._paymentData_paymentReceivers = changetype<Bytes[]>(event.params._paymentData.paymentReceivers)
+  entity._paymentData_amounts = changetype<BigInt[]>(event.params._paymentData.amounts)
   entity.token = event.params.token
   entity.tokenAmount = event.params.tokenAmount
   entity.feeToken = event.params.feeToken
