@@ -1,0 +1,18 @@
+{
+  "name": "sepolia-multiplechain",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ sepolia-multiplechain",
+    "create-local": "graph create --node http://localhost:8020/ sepolia-multiplechain",
+    "remove-local": "graph remove --node http://localhost:8020/ sepolia-multiplechain",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sepolia-multiplechain",
+    "test": "graph test"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.73.0",
+    "@graphprotocol/graph-ts": "0.32.0"
+  },
+  "devDependencies": { "matchstick-as": "0.5.0" }
+}
