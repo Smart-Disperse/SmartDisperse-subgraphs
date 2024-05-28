@@ -1,0 +1,38 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: FinalMultipleDestination
+    network: base-sepolia
+    source:
+      address: "0xc8b9945C14996501212f289f57009e4e73ebD7a5"
+      abi: FinalMultipleDestination
+      startBlock: 10561849
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ERC20TokenDispersed
+        - MessageReceived
+        - MessageSent
+        - OwnershipTransferRequested
+        - OwnershipTransferred
+      abis:
+        - name: FinalMultipleDestination
+          file: ./abis/FinalMultipleDestination.json
+      eventHandlers:
+        - event: ERC20TokenDispersed(address,address,address[],uint256[])
+          handler: handleERC20TokenDispersed
+        - event: MessageReceived(bytes32,uint64,address,bytes,address,uint256)
+          handler: handleMessageReceived
+        - event: MessageSent(address,bytes32,uint64,address,(address[],uint256[]),address,uint256,address,uint256)
+          handler: handleMessageSent
+        - event: OwnershipTransferRequested(indexed address,indexed address)
+          handler: handleOwnershipTransferRequested
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/final-multiple-destination.ts
