@@ -1,0 +1,58 @@
+type ERC20TokenDispersed @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  token: Bytes! # address
+  recipients: [Bytes!]! # address[]
+  amounts: [BigInt!]! # uint256[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MessageReceived @entity(immutable: true) {
+  id: Bytes!
+  messageId: Bytes! # bytes32
+  sourceChainSelector: BigInt! # uint64
+  sender: Bytes! # address
+  _paymentData: Bytes! # bytes
+  token: Bytes! # address
+  tokenAmount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MessageSent @entity(immutable: true) {
+  id: Bytes!
+  msgSender: Bytes! # address
+  messageId: Bytes! # bytes32
+  destinationChainSelector: BigInt! # uint64
+  receiver: Bytes! # address
+  _paymentData_paymentReceivers: [Bytes!]! # address[]
+  _paymentData_amounts: [BigInt!]! # uint256[]
+  token: Bytes! # address
+  tokenAmount: BigInt! # uint256
+  feeToken: Bytes! # address
+  fees: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferRequested @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
